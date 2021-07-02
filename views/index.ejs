@@ -7,18 +7,20 @@
         <title>Document</title>
     </head>
     <body>
+        <a href="snip/command/new">Create New 'Command Snippet'</a>
         <% snippets.forEach(snip => { %>
             <div>
+                <h1><%= snip.title %></h1>
                 <span><%= snip.program %></span>
-                <h4><%= snip.title %></h4>
-                <code><%= snip.snippet %></code>
-                <p><%= snip.description %></p>
+                <%- snip.meta_html_sanitised %>
+                <h4><strong>Tags</strong></h4>
                 <ul>
                     <% snip.tags.forEach(tag => { %>
                         <li><%= tag %></li>
                     <% }); %>
                 </ul>
             </div>
+            <hr>
         <% }); %>
     </body>
 </html>

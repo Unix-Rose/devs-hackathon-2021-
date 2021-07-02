@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Snippet = require('./snippet');
+const slugify = require('slugify');
 
 const commandSnippetSchema = new mongoose.Schema({
     program: {

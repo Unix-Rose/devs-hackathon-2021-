@@ -13,15 +13,19 @@ app.use(express.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    var snip = new CommandSnippet();
-    snip.title = "Unzip a gzip tar file";
-    snip.snippet = "tar -xzvf file_name.tar";
-    snip.description = "Extract a gzipped tar file archive";
-    snip.tags = ["tar", "gzip", "extract"];
-    snip.program = "tar";
+app.get('/', async (req, res) => {
+    // var snip = new CommandSnippet();
+    // snip.title = "Unzip a gzip tar file";
+    // snip.snippet = "tar -xzvf file_name.tar";
+    // snip.description = "Extract a gzipped tar file archive";
+    // snip.tags = ["tar", "gzip", "extract"];
+    // snip.program = "tar";
 
-    res.render('index', { snippets: [snip] });
+    const snippets = await Snippet.find().sort({ meta_date: 'desc' });
+
+    res.render('index', { snippets: snippets });
 });
+
+app.use('/snip', snipRouter);
 
 app.listen(5000);

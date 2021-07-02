@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+const marked = require('marked');
+const slugify = require('slugify');
+
+const createDomPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
+const dompurify = createDomPurify(new JSDOM().window);
+
 var options = { discriminatorKey: 'kind', collection: 'snippets' };
 
 const snippetSchema = new mongoose.Schema({
@@ -8,10 +15,6 @@ const snippetSchema = new mongoose.Schema({
         required: true
     },
     snippet: {
-        type: String,
-        required: true
-    },
-    description: {
         type: String,
         required: true
     },
@@ -40,8 +43,8 @@ snippetSchema.pre('validate', function(next) {
         this.meta_slug = slugify(this.title, { lower: true, strict: true });
     }
 
-    if (this.description) {
-        this.meta_html_sanitised = dompurify.sanitize(marked(this.description));
+    if (this.snippet) {
+        this.meta_html_sanitised = dompurify.sanitize(marked(this.snippet));
     }
 
     next();
