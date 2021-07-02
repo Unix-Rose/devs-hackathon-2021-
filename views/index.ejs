@@ -24,6 +24,11 @@
                         <li><%= tag %></li>
                     <% }); %>
                 </ul>
+
+                <!-- Snippet Controls -->
+                <a href="/snip/<%= snip.meta_slug %>">View</a>
+                <a href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
+                <a href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
             </div>
         <% }); %>
     </body>

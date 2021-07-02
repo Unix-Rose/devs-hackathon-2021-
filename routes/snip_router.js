@@ -34,7 +34,7 @@ function saveSnippetAndRedirect(path) {
             
         } else if (req.body.kind === 'CommandSnippet') {
             snip = new CommandSnippet;
-            snip.program = req.body.program; // TODO: Only for Command Types
+            snip.program = req.body.program;
 
         } else {
             throw Error('Snippet Kind not defined');
