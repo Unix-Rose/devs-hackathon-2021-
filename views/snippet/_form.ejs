@@ -14,12 +14,23 @@
     <label for="tags">Tags (Separate with Commas: tag1,tag2,etc...)</label>
     <input required value="<%= snip.tags.join(","); %>" type="text" name="tags" id="tags">
 </div>
+
+<!-- Type-Dependent Fields -->
 <% if (snip.kind === "CommandSnippet") { %>
+
+<!-- These fields are for Command Snippets -->
+<input required disabled value="CommandSnippet" type="text" name="kind" id="kind">
 <div>
     <label for="program">Program</label>
     <input required value="<%= snip.program %>" type="text" name="program" id="program">
 </div>
+
+
 <% } else if (snip.kind === "CodeSnippet") { %>
+
+<!-- These fields are for Code Snippets -->
+<input required disabled value="CodeSnippet" type="text" name="kind" id="kind">
+
 <div>
     <label for="language">Language</label>
     <input required value="<%= snip.language %>" type="text" name="language" id="language">
