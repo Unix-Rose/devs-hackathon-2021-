@@ -1,20 +1,25 @@
 const express = require('express');
 const CommandSnippet = require('./../schema/command_snippet');
+const CodeSnippet = require('./../schema/code_snippet');
 const router = express.Router();
 
 // TODO: Rethink where this is mounted
-router.get('/command/new', (req, res) => {
-    res.render('command/new', { snip: new CommandSnippet });
+router.get('/new/command', (req, res) => {
+    res.render('snippet/new', { snip: new CommandSnippet, title: 'Create Command Snippet' });
+});
+
+router.get('/new/code', (req, res) => {
+    res.render('snippet/new', { snip: new CodeSnippet, title: 'Create Code Snippet' });
 });
 
 router.get('/:slug', (req, res) => {
-
+    res.send(`Viewing snippet '${req.params.slug}'`);
 });
 
-router.post('/command', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     req.snippet = new CommandSnippet();
     next();
-}, saveSnippetAndRedirect('command/new'));
+}, saveSnippetAndRedirect('/new'));
 
 function saveSnippetAndRedirect(path) {
     return async (req, res) => {

@@ -7,9 +7,6 @@ const commandSnippetSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    category: {
-        type: String
-    },
 });
 
 commandSnippetSchema.pre('validate', function(next) {

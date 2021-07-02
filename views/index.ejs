@@ -7,7 +7,11 @@
         <title>Document</title>
     </head>
     <body>
-        <a href="snip/command/new">Create New 'Command Snippet'</a>
+        <p>Create New: 
+        <a href="snip/new/command">Command Snippet</a>
+        or
+        <a href="snip/new/code">Code Snippet</a>
+        </p>
         <% snippets.forEach(snip => { %>
             <div>
                 <h1><%= snip.title %></h1>

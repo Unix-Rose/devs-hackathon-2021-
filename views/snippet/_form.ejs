@@ -7,10 +7,6 @@
     <textarea required name="snippet" id="snippet"><%= snip.snippet %></textarea>
 </div>
 <div>
-    <label for="program">Program</label>
-    <input required value="<%= snip.program %>" type="text" name="program" id="program">
-</div>
-<div>
     <label for="category">Category</label>
     <input required value="<%= snip.category %>" type="text" name="category" id="category">
 </div>
@@ -18,6 +14,17 @@
     <label for="tags">Tags (Separate with Commas: tag1,tag2,etc...)</label>
     <input required value="<%= snip.tags.join(","); %>" type="text" name="tags" id="tags">
 </div>
+<% if (snip.kind === "CommandSnippet") { %>
+<div>
+    <label for="program">Program</label>
+    <input required value="<%= snip.program %>" type="text" name="program" id="program">
+</div>
+<% } else if (snip.kind === "CodeSnippet") { %>
+<div>
+    <label for="language">Language</label>
+    <input required value="<%= snip.language %>" type="text" name="language" id="language">
+</div>
+<% } %>
 
 <a href="/">Cancel</a>
 <button type="submit">Save</button>

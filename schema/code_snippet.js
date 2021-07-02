@@ -6,10 +6,7 @@ const codeSnippetSchema = new mongoose.Schema({
     language: {
         type: String,
         required: true
-    },
-    category: {
-        type: String
-    },
+    }
 });
 
 codeSnippetSchema.pre('validate', function(next) {
