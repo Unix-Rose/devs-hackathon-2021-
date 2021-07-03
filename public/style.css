@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
-
 * {
-    padding: 0; /* Set padding for all elements to 0. */
-    margin: 0; /* Set margin for all elements to 0. */
+    padding: 0;
+    /* Set padding for all elements to 0. */
+    margin: 0;
+    /* Set margin for all elements to 0. */
     font-family: 'Roboto Slab', serif;
 }
 
@@ -46,28 +47,37 @@ header {
     width: 400px;
     height: 40px;
     border: none;
-    height: 40px;
     padding: 5px 8px;
     box-sizing: border-box;
 }
 
+/* Checkbox + Labels */
+.chk-label {
+    line-height: 40px;
+    color: white;
+    padding: 0 15px;
+    margin-right: 30px;
+}
+
 /* MISCELLANEOUS */
 
-.snippet-container { /* selector for elements of class snippet-container. */
-    border: 1px solid black; /* border has a width of 1 pixel. */
-    padding: 15px; 
-    margin-left: 40px;  
+.snippet-container {
+    /* selector for elements of class snippet-container. */
+    border: 1px solid black;
+    /* border has a width of 1 pixel. */
+    padding: 15px;
+    margin-left: 40px;
     margin-bottom: 20px;
     margin-top: 20px;
     background-color: #fafafa;
     border-radius: 2px;
     /* box-shadow: 0 1px 4px rgba(0,0,0,0.2); */
-
 }
 
-main { /* selector for body */
-    max-width: 960px; 
-    margin: auto; 
+main {
+    /* selector for body */
+    max-width: 960px;
+    margin: auto;
 }
 
 .btn-container {
@@ -76,26 +86,27 @@ main { /* selector for body */
     margin: auto;
 }
 
-.btn { /* selector for button */
+.btn {
+    /* selector for button */
     display: inline-block;
     height: 80px;
     width: 50%;
-    border: 1px solid blue; 
+    border: 1px solid blue;
     background-color: cyan;
-    padding: 10px; 
+    padding: 10px;
     margin: 10px;
     text-align: center;
     border-radius: 2px;
     transition: background-color 0.15s ease-out;
 }
 
-.btn:hover { 
+.btn:hover {
     background-color: blueviolet;
 }
 
 .link {
     display: inline-block;
-    border: 1px solid blue; 
+    border: 1px solid blue;
     background-color: cyan;
     padding: 3px;
     margin: 3px;
@@ -106,4 +117,3 @@ main { /* selector for body */
 .list {
     display: flex;
 }
-

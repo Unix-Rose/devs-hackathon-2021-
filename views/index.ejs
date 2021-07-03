@@ -14,13 +14,13 @@
     <!-- Search bar in top left corner. -->
     <header>
         <form action="/" method="GET" class="search-form">
-            <div first-wrap>
-                <input id="search" name="q" type="text" value="<%= searchQuery %>" placeholder="What are you looking for?" />
-            </div>
-            <div>
-                <input type="submit" value="Search">
-            </div>
-            </div>
+            <input id="search" name="q" type="text" value="<%= searchQuery %>" placeholder="What are you looking for?" />
+            <input type="submit" value="Search">           
+
+            <input class="chk" type="checkbox" name="excludeSearchCode" id="excludeSearchCode" <%= excludeSearchCode ? "checked" : "" %>>
+            <label class="chk-label" for="excludeSearchCode">Exclude Code Snippets</label>
+            <input class="chk" type="checkbox" name="excludeSearchCommand" id="excludeSearchCommand" <%= excludeSearchCommand ? "checked" : "" %>>
+            <label class="chk-label" for="excludeSearchCommand">Exclude Command Snippets</label>
         </form>
     </header>
 
