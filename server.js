@@ -23,9 +23,10 @@ app.get('/', async (req, res) => {
     
     // TODO: Fill the search bar with current query
     let snippets = await Snippet.find().sort({ meta_date: 'desc' });
-    snippets = await search(req.query.q);
+    let searchQuery = req.query.q;
+    snippets = await search(searchQuery);
 
-    res.render('index', { snippets: snippets });
+    res.render('index', { snippets: snippets, searchQuery: searchQuery });
 });
 
 async function search(searchQuery) {
