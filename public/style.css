@@ -106,3 +106,14 @@ button {
   .active, .collapsible:hover {
     background-color: #555;
   }
+  .collapsible:after {
+    content: "Show"; 
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "Hide"; /* Unicode character for "minus" sign (-) */
+  }

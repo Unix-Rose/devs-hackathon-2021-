@@ -37,6 +37,8 @@
         <a class="btn" href="/snip/new/code">Create code snippet</a>
         <a class="btn" href="/snip/new/command">Create command snippet</a>
     </section>
+
+    <!-- Display all snippets. -->
     <% snippets.forEach(snip=> { %>
         <div class="snippet-container">
             <h1>
@@ -61,15 +63,15 @@
                 </ul>
         </div>
         <% }); %>
+
+<!-- Display all code snippets. -->
 <section id="snippets-header"> 
     Code snippets 
 </section>
-<% snippets.forEach(snip=> { %>
+<% snippets.forEach(snip=> { 
+    if (snip.kind === "CodeSnippet") { %>
 <button type="button" class="collapsible"><%=snip.title%></button>
 <div class="snippet-container">
-    <h1>
-        <%= snip.title %>
-    </h1>
     <span>
         <%= snip.program %>
     </span>
@@ -88,8 +90,52 @@
         <a class = "link" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
         </ul>
 </div>
-<% 
-}); %>>
+<% }
+}); %>
+
+<section id="snippets-header"> 
+    Command snippets 
+</section>
+<% snippets.forEach(snip=> { 
+    if (snip.kind === "CommandSnippet") { %>
+<button type="button" class="collapsible"><%=snip.title%></button>
+<div class="snippet-container">
+    <span>
+        <%= snip.program %>
+    </span>
+    <%- snip.meta_html_sanitised %>
+        <h4><strong>Tags</strong></h4>
+        <ul class = "list">
+            <% snip.tags.forEach(tag=> { %>
+                    <a class = "link" href="/snip/python-b"><%= tag  %> </a> 
+                <% }); %>
+        </ul>
+
+        <!-- Snippet Controls -->
+        <ul class = "list">
+        <a class = "link" href="/snip/<%= snip.meta_slug %>">View</a>
+        <a class = "link" href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
+        <a class = "link" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
+        </ul>
+</div>
+<% }
+}); %>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+</script>
 </body>
 
 </html>
