@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/md-style.css" />
     <title>Document</title>
 </head>
 
@@ -69,7 +70,9 @@
                     <span>
                         <%= snip.program %>
                     </span>
-                    <%- snip.meta_html_sanitised %>
+                    <div class="snippet-md">
+                        <%- snip.meta_html_sanitised %>
+                    </div>
                     <h4><strong>Tags</strong></h4>
                     <ul class="list">
                         <% snip.tags.forEach(tag=> { %>
