@@ -4,12 +4,14 @@ const Snippet = require('./schema/snippet');
 const CommandSnippet = require('./schema/command_snippet');
 const CodeSnippet = require('./schema/code_snippet');
 const snipRouter = require('./routes/snip_router');
+const methodOverride = require('method-override');
 
 mongoose.connect('mongodb://localhost/snippets', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'))
 
 app.set('view engine', 'ejs');
