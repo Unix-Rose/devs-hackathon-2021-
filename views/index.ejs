@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="/style.css" />
-        <title>Document</title>
-    </head>
-    <body>
 
-        <section class="header">
-            <h1>Search</h1>
-        </section>
-        <section class="header">
-            <h1>Search</h1>
-        </section><section class="header">
-            <h1>Search</h1>
-        </section>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <title>Document</title>
+</head>
 
-        <p>Create New: 
+<body>
+
+    <section class="header">
+        <form class="search-form">
+            <div>
+                <button class="btn-search" type="button">Search</button>
+            </div>
+            <div class="input-field first-wrap">
+                <input id="search" type="text" placeholder="What are you looking for?" />
+            </div>
+            </div>
+        </form>
+    </section>
+
+
+    <section class="header">
+        <h1>Search</h1>
+    </section>
+    <section class="header">
+        <h1>Search</h1>
+    </section>
+
+
+
+
+
+    <p>Create New:
         <a href="snip/new/command">Command Snippet</a>
         or
         <a href="snip/new/code">Code Snippet</a>
-        </p>
-        <% snippets.forEach(snip => { %>
-            <div class="snippet-container">
-                <h1><%= snip.title %></h1>
-                <span><%= snip.program %></span>
-                <%- snip.meta_html_sanitised %>
+    </p>
+    <% snippets.forEach(snip=> { %>
+        <div class="snippet-container">
+            <h1>
+                <%= snip.title %>
+            </h1>
+            <span>
+                <%= snip.program %>
+            </span>
+            <%- snip.meta_html_sanitised %>
                 <h4><strong>Tags</strong></h4>
                 <ul>
-                    <% snip.tags.forEach(tag => { %>
-                        <li><%= tag %></li>
-                    <% }); %>
+                    <% snip.tags.forEach(tag=> { %>
+                        <li>
+                            <%= tag %>
+                        </li>
+                        <% }); %>
                 </ul>
 
                 <!-- Snippet Controls -->
                 <a href="/snip/<%= snip.meta_slug %>">View</a>
                 <a href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
                 <a href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
-            </div>
+        </div>
         <% }); %>
-    </body>
+</body>
+
 </html>
