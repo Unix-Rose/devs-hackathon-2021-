@@ -80,3 +80,29 @@ button {
     display: flex;
 }
 
+#snippets-header {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+    font-size: large;
+    background-color: blue;
+}
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    text-align: left;
+    outline: none;
+    font-size: medium;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
