@@ -85,7 +85,7 @@ function saveSnippetAndRedirect(path) {
         snip.category = req.body.category;
 
         if (snip.kind === 'CodeSnippet') {
-            snip.language = req.body.language;
+            snip.lang = req.body.lang;
         }
 
         if (snip.kind === 'CommandSnippet') {

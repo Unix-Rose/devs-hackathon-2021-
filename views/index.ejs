@@ -18,7 +18,7 @@
             <input id="search" name="q" type="text" value="<%= searchQuery %>"
                 placeholder="What are you looking for?" />
             <input type="submit" value="Search">
-
+    
             <div class="chk-container">
                 <div class="round">
                   <input type="checkbox" name="excludeSearchCommand" id="excludeSearchCommand" <%= excludeSearchCommand ? "checked" : "" %> />
@@ -26,7 +26,7 @@
                 </div>
                 <label class="chk-label" for="excludeSearchCommand">Command Snippets</label>
             </div>
-
+    
             <div class="chk-container">
                 <div class="round">
                   <input type="checkbox" name="excludeSearchCode" id="excludeSearchCode" <%=excludeSearchCode ? "checked" : "" %> />
@@ -52,95 +52,10 @@
             <a class="btn" href="/snip/new/command">Create command snippet</a>
         </section>
 
-        </section>
+        <h1 class="section-header">Latest Snippets</h1>
 
         <!-- Display snippets. -->
-        <%- include('snippets') %>
-
-        <!-- Display all code snippets. -->
-        <section id="snippets-header">
-            Code snippets
-        </section>
-        <% snippets.forEach(snip=> { %>
-            <% if (snip.kind === "CodeSnippet") { %>
-                <button type="button" class="collapsible">
-                    <%=snip.title%>
-                </button>
-                <div class="snippet-container">
-                    <span>
-                        <%= snip.program %>
-                    </span>
-                    <div class="snippet-md">
-                        <%- snip.meta_html_sanitised %>
-                    </div>
-                    <h4><strong>Tags</strong></h4>
-                    <ul class="list">
-                        <% snip.tags.forEach(tag=> { %>
-                            <a class="link" href="/snip/python-b">
-                                <%= tag %>
-                            </a>
-                        <% }); %>
-                    </ul>
-
-                    <!-- Snippet Controls -->
-                    <ul class="list">
-                        <a class="link" href="/snip/<%= snip.meta_slug %>">View</a>
-                        <a class="link" href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
-                        <a class="link" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
-                    </ul>
-                </div>
-            <% } %>
-        <% }); %>
-
-        <section id="snippets-header">
-            Command snippets
-        </section>
-        <% snippets.forEach(snip=> { %>
-            <% if (snip.kind === "CommandSnippet") { %>
-                <button type="button" class="collapsible">
-                    <%=snip.title%>
-                </button>
-                <div class="snippet-container">
-                    <span>
-                        <%= snip.program %>
-                    </span>
-                    <%- snip.meta_html_sanitised %>
-                    <h4><strong>Tags</strong></h4>
-                    <ul class="list">
-                        <% snip.tags.forEach(tag=> { %>
-                            <a class="link" href="/snip/python-b">
-                                <%= tag %>
-                            </a>
-                        <% }); %>
-                    </ul>
-
-                    <!-- Snippet Controls -->
-                    <ul class="list">
-                        <a class="link" href="/snip/<%= snip.meta_slug %>">View</a>
-                        <a class="link" href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
-                        <a class="link" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
-                    </ul>
-                </div>
-            <% } %>
-        <% }); %>
-
-        <!-- Collapser Script -->
-        <script>
-            var coll = document.getElementsByClassName("collapsible");
-            var i;
-
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            }
-        </script>
+        <%- include('_snippets') %>
 
     </main>
 </body>
