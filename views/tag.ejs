@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <!-- Search bar in top left corner. -->
+    <header>
+        <form action="/" method="GET" class="search-form">
+            <div first-wrap>
+                <input id="search" name="q" type="text" placeholder="What are you looking for?" />
+            </div>
+            <div>
+                <input type="submit" value="Search">
+            </div>
+            </div>
+        </form>
+    </header>
+
+    <main>
+        <h1><a class="focus-link" href='/'>home</a> / tags / <%= tag %></h1>
+        
+        <!-- Display snippets. -->
+        <%- include('snippets') %>
+    </main>
+</body>
+
+</html>

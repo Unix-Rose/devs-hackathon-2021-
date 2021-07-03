@@ -4,6 +4,7 @@ const Snippet = require('./schema/snippet');
 const CommandSnippet = require('./schema/command_snippet');
 const CodeSnippet = require('./schema/code_snippet');
 const snipRouter = require('./routes/snip_router');
+const tagRouter = require('./routes/tag_router');
 const methodOverride = require('method-override');
 
 // lunr search
@@ -35,7 +36,6 @@ async function search(searchQuery) {
     const snippets = await Snippet.find();
     let results = snippets;
 
-    console.log(searchQuery);
     if (searchQuery != null && searchQuery != undefined) {
         // Perform full text search
         var idx = lunr(function () {
@@ -70,5 +70,6 @@ async function search(searchQuery) {
 }
 
 app.use('/snip', snipRouter);
+app.use('/tag', tagRouter);
 
 app.listen(5000);
