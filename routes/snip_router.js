@@ -1,6 +1,7 @@
 const express = require('express');
 const CommandSnippet = require('./../schema/command_snippet');
 const CodeSnippet = require('./../schema/code_snippet');
+const Snippet = require('./../schema/snippet');
 const router = express.Router();
 
 // TODO: Rethink where this is mounted
@@ -12,15 +13,25 @@ router.get('/new/code', (req, res) => {
     res.render('snippet/new', { snip: new CodeSnippet, title: 'Create Code Snippet' });
 });
 
+async function get_concrete_type_snippet(slug) {
+    let real = await CommandSnippet.findOne({meta_slug: slug});
+    if (real == null) {
+        real = await CodeSnippet.findOne({meta_slug: slug});
+    }
+
+    return real;
+}
+
 router.get('/:slug/edit', async (req, res) => {
-    const snip = await Snippet.findOne({slug: req.params.slug});
+    const snip = await get_concrete_type_snippet(req.params.slug);
     if (snip == null) res.redirect('/');
-    let title = snip.kind === "code" ? "Edit Code Snippet" : "Edit Command Snippet";
+    let title = snip.kind === "CodeSnippet" ? "Edit Code Snippet" : "Edit Command Snippet";
     res.render('snippet/edit', { snip: snip, title: title });
 });
 
-router.get('/:slug', (req, res) => {
-    res.send(`Viewing snippet '${req.params.slug}'`);
+router.get('/:slug', async (req, res) => {
+    const snip = await get_concrete_type_snippet(req.params.slug);
+    res.render('snippet/view', { snip: snip, title: 'Viewing Snippet' });
 });
 
 router.post('/', saveSnippetAndRedirect('/new'));
