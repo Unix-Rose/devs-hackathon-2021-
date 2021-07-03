@@ -10,36 +10,35 @@
 </head>
 
 <body>
-
+    
+    <!-- Search bar in top left corner. -->
     <section class="header">
         <form class="search-form">
-            <div>
-                <button class="btn-search" type="button">Search</button>
-            </div>
-            <div class="input-field first-wrap">
+            <div first-wrap>
                 <input id="search" type="text" placeholder="What are you looking for?" />
+            </div>
+            <div>
+                <button type="button">Search</button>
             </div>
             </div>
         </form>
     </section>
-
-
-    <section class="header">
-        <h1>Search</h1>
+    
+    <!-- Buttons for navigating to code/command snippets. -->
+    <!-- These links are temporary. Change them later. -->
+    <section id="buttons">
+            <a class="btn" href="/snip/python-a">Code Snippets</a> 
+            <a class="btn" href="/snip/python-b">Command Snippets</a>
     </section>
-    <section class="header">
-        <h1>Search</h1>
+    
+    <!-- Buttons for navigating to the forms for creating 
+    code/command snippets. -->
+    <section id="create-buttons">
+        <a class="btn" href="/snip/python-a">Create code snippet</a>
+        <a class="btn" href="/snip/python-b">Create command snippet</a>
     </section>
-
-
-
-
-
-    <p>Create New:
-        <a href="snip/new/command">Command Snippet</a>
-        or
-        <a href="snip/new/code">Code Snippet</a>
-    </p>
+    
+    <!-- Display snippets. -->
     <% snippets.forEach(snip=> { %>
         <div class="snippet-container">
             <h1>
@@ -50,18 +49,18 @@
             </span>
             <%- snip.meta_html_sanitised %>
                 <h4><strong>Tags</strong></h4>
-                <ul>
+                <ul class = "list">
                     <% snip.tags.forEach(tag=> { %>
-                        <li>
-                            <%= tag %>
-                        </li>
+                            <a class = "link" href="/snip/python-b"><%= tag  %> </a> 
                         <% }); %>
                 </ul>
 
                 <!-- Snippet Controls -->
-                <a href="/snip/<%= snip.meta_slug %>">View</a>
-                <a href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
-                <a href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
+                <ul class = "list">
+                <a class = "link" href="/snip/<%= snip.meta_slug %>">View</a>
+                <a class = "link" href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
+                <a class = "link" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
+                </ul>
         </div>
         <% }); %>
 </body>
