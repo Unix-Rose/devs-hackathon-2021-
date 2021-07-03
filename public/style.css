@@ -212,10 +212,11 @@ main {
 
 .form-question-text {
     font-family: 'Roboto Slab', serif;
-    color: lawngreen;
+    color: black;
+    margin: 5px;
+    padding: 5px;
 }
 
-.form-body {
-    border: black;
-    border-radius: 1px;
+.hidden {
+    list-style-type: none;
 }
