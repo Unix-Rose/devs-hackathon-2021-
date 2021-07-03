@@ -1,17 +1,26 @@
-<div>
-    <label for="title">Title</label>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+
+<body>
+
+<div class="form-question-text">
+    <label for="title" class="form-question-text">Title</label>
     <input required value="<%= snip.title %>" type="text" name="title" id="title">
 </div>
-<div>
-    <label for="snippet">Snippet</label>
+<div class="form-question-text">
+    <label for="snippet" class="form-question-text">Snippet</label>
     <textarea required name="snippet" id="snippet"><%= snip.snippet %></textarea>
 </div>
-<div>
-    <label for="category">Category</label>
+<div class="form-question-text">
+    <label for="category" class="form-question-text">Category</label>
     <input value="<%= snip.category %>" type="text" name="category" id="category">
 </div>
-<div>
-    <label for="tags">Tags (Separate with Commas: tag1,tag2,etc...)</label>
+<div class="form-question-text">
+    <label for="tags" class="form-question-text">Tags (Separate with Commas: tag1,tag2,etc...)</label>
     <input value="<%= snip.tags.join(","); %>" type="text" name="tags" id="tags">
 </div>
 
@@ -19,9 +28,9 @@
 <% if (snip.kind === "CommandSnippet") { %>
 
 <!-- These fields are for Command Snippets -->
-<input required readonly value="CommandSnippet" type="text" name="kind" id="kind">
-<div>
-    <label for="program">Program</label>
+<input required readonly value="CommandSnippet" type="text" name="kind" id="kind" class="form-question-text">
+<div class="form-question-text">
+    <label for="program" class="form-question-text">Program</label>
     <input required value="<%= snip.program %>" type="text" name="program" id="program">
 </div>
 
@@ -29,13 +38,14 @@
 <% } else if (snip.kind === "CodeSnippet") { %>
 
 <!-- These fields are for Code Snippets -->
-<input required readonly value="CodeSnippet" type="text" name="kind" id="kind">
+<input required readonly value="CodeSnippet" type="text" name="kind" id="kind" class="form-question-text">
 
-<div>
-    <label for="language">Language</label>
+<div class="form-question-text">
+    <label for="language" class="form-question-text">Language</label>
     <input required value="<%= snip.language %>" type="text" name="language" id="language">
 </div>
 <% } %>
 
-<a href="/">Cancel</a>
-<button type="submit">Save</button>
+<a href="/">Cancel</a class="form-question-text">
+<button type="submit" class="form-question-text">Save</button>
+</body>

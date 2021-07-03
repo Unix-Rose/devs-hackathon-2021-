@@ -209,3 +209,13 @@ main {
 .round input[type="checkbox"]:checked+label:after {
     opacity: 0;
 }
+
+.form-question-text {
+    font-family: 'Roboto Slab', serif;
+    color: lawngreen;
+}
+
+.form-body {
+    border: black;
+    border-radius: 1px;
+}
