@@ -81,7 +81,7 @@ function saveSnippetAndRedirect(path) {
 
         snip.title = req.body.title;
         snip.snippet = req.body.snippet;
-        snip.tags = req.body.tags.split(',');
+        snip.tags = req.body.tags.replace(/\s/g,'').split(',');
         snip.category = req.body.category;
 
         if (snip.kind === 'CodeSnippet') {

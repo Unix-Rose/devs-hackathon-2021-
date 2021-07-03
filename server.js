@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 app.get('/', async (req, res) => {
     
     // TODO: Fill the search bar with current query
-    let snippets = await Snippet.find().sort({ meta_date: 'desc' });
+    let snippets = await Snippet.find().sort({ meta_date: 'descending' });
     let searchQuery = req.query.q;
     let searchCode = (req.query.excludeSearchCode == undefined);
     let searchCommand = (req.query.excludeSearchCommand == undefined);
