@@ -18,12 +18,21 @@
                 placeholder="What are you looking for?" />
             <input type="submit" value="Search">
 
-            <input class="chk" type="checkbox" name="excludeSearchCode" id="excludeSearchCode" <%=excludeSearchCode
-                ? "checked" : "" %>>
-            <label class="chk-label" for="excludeSearchCode">Exclude Code Snippets</label>
-            <input class="chk" type="checkbox" name="excludeSearchCommand" id="excludeSearchCommand"
-                <%=excludeSearchCommand ? "checked" : "" %>>
-            <label class="chk-label" for="excludeSearchCommand">Exclude Command Snippets</label>
+            <div class="chk-container">
+                <div class="round">
+                  <input type="checkbox" name="excludeSearchCommand" id="excludeSearchCommand" <%= excludeSearchCommand ? "checked" : "" %> />
+                  <label for="excludeSearchCommand"></label>
+                </div>
+                <label class="chk-label" for="excludeSearchCommand">Command Snippets</label>
+            </div>
+
+            <div class="chk-container">
+                <div class="round">
+                  <input type="checkbox" name="excludeSearchCode" id="excludeSearchCode" <%=excludeSearchCode ? "checked" : "" %> />
+                  <label for="excludeSearchCode"></label>
+                </div>
+                <label class="chk-label" for="excludeSearchCode">Code Snippets</label>
+            </div>
         </form>
     </header>
 
