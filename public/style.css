@@ -1,4 +1,6 @@
-* { /* selector for all elements */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+* {
     padding: 0; /* Set padding for all elements to 0. */
     margin: 0; /* Set margin for all elements to 0. */
 }
@@ -25,6 +27,21 @@ body { /* selector for body */
     transition: background-color 0.15s ease-out;
 }
 
-.btn:hover {
+.btn:hover { 
     background-color: blueviolet;
+}
+
+.header {
+    padding: 15 px;
+    margin: 30px;
+}
+
+.search-form {
+    display: flex;
+}
+.btn-search {
+    font-family: 'Roboto Slab', serif;
+}
+.input-field {
+    font-family: 'Roboto Slab', serif; 
 }
