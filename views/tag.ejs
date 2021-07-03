@@ -13,23 +13,13 @@
 <body>
     
     <!-- Search bar in top left corner. -->
-    <header>
-        <form action="/" method="GET" class="search-form">
-            <div first-wrap>
-                <input id="search" name="q" type="text" placeholder="What are you looking for?" />
-            </div>
-            <div>
-                <input type="submit" value="Search">
-            </div>
-            </div>
-        </form>
-    </header>
+    <%- include('_header') %>
 
     <main>
-        <h1><a class="focus-link" href='/'>home</a> / tags / <%= tag %></h1>
+        <h1 class="section-header"><a class="focus-link" href='/'>home</a> / tags / <%= tag %></h1>
         
         <!-- Display snippets. -->
-        <%- include('snippets') %>
+        <%- include('_snippets') %>
     </main>
 </body>
 

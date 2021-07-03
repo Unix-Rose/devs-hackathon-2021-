@@ -4,15 +4,57 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/style.css" />
         <title>Document</title>
     </head>
     <body>
-        <h1><%= title %></h1>
+        <!-- Search bar in top left corner. -->
+        <%- include('../_header') %>
+
+        <main>
+            <h1 class="section-header"><a class="focus-link" href='/'>home</a> / <%= title %></h1>
         
-        <form action="/snip/<%= snip.id %>?_method=DELETE" method="POST">
-            <p>Are you sure you want to delete the following snippet?</p>
-            <p>Title: <%= snip.title %></p>
-            <input type="submit" value="Confirm Delete">
-        </form>
+            <form action="/snip/<%= snip.id %>?_method=DELETE" method="POST">
+                <p>Are you sure you want to delete the following snippet?</p>
+
+                <!-- Display snippet -->
+                <div class="snippet-container">
+                    <!-- Heading -->
+                    <% if (snip.kind === 'CommandSnippet') { %>
+                        <h4>Command Snippet</h4>
+                    <% } else if (snip.kind === 'CodeSnippet') { %>
+                        <h4>Code Snippet</h4>
+                    <% } %>
+            
+                    <!-- Title -->
+                    <h1>
+                        <a class="focus-link">
+                            <% if (snip.kind === 'CommandSnippet') { %>
+                                <%= snip.program %>:
+                            <% } else if (snip.kind === 'CodeSnippet') { %>
+                                <%= snip.lang %>:
+                            <% } %>
+                        </a>
+            
+                        <%= snip.title %>
+                    </h1>
+            
+                    <div class="snippet-md">
+                        <%- snip.meta_html_sanitised %>
+                    </div>
+            
+                    <div class="bottom-bar">
+                        <!-- Tag List -->
+                        <ul class="taglist">
+                            <h4>Tags:</h4>
+                            <% snip.tags.forEach(tag=> { %>
+                                <a class = "link" href="/tag/<%= tag %>"><%= tag  %> </a> 
+                            <% }); %>
+                        </ul>
+                    </div>
+                </div>
+                <input class="submit-btn" type="submit" value="Confirm Delete">
+            </form>
+        </main>
     </body>
 </html>

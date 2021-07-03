@@ -1,11 +1,6 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/style.css" />
-</head>
+<link rel="stylesheet" type="text/css" href="/style.css" />
 
-<body class="form-body">
+<div class="form-body">
 
     <div class="form-question-text form-body">
         <label for="title" class="form-question-text">Title</label>
@@ -30,25 +25,26 @@
         <!-- These fields are for Command Snippets -->
         <div hidden> <input required readonly value="CommandSnippet" type="text" name="kind" id="kind" class="hidden">
         </div>
-       
+
         <div class="form-question-text">
             <label for="program" class="form-question-text">Program</label>
             <input required value="<%= snip.program %>" type="text" name="program" id="program">
         </div>
 
 
-        <% } else if (snip.kind==="CodeSnippet" ) { %>
+    <% } else if (snip.kind === "CodeSnippet" ) { %>
 
-            <!-- These fields are for Code Snippets -->
-            <div hidden><input required readonly value="CodeSnippet" type="text" name="kind" id="kind" class="form-question-text">
-            </div>
+        <!-- These fields are for Code Snippets -->
+        <div hidden><input required readonly value="CodeSnippet" type="text" name="kind" id="kind"
+                class="form-question-text">
+        </div>
 
-            <div class="form-question-text">
-                <label for="language" class="form-question-text">Language</label>
-                <input required value="<%= snip.language %>" type="text" name="language" id="language">
-            </div>
-            <% } %>
+        <div class="form-question-text">
+            <label for="lang" class="form-question-text">Language</label>
+            <input required value="<%= snip.lang %>" type="text" name="lang" id="lang">
+        </div>
+    <% } %>
 
-                <a href="/">Cancel</a class="form-question-text">
-                <button type="submit" class="form-question-text">Save</button>
-</body>
+    <a href="/">Cancel</a class="form-question-text">
+    <input type="submit" class="form-question-text submit-btn" value="Save">
+</div>
