@@ -283,6 +283,10 @@ main {
     margin-bottom: 15px;
 }
 
+.form-body textarea {
+    min-height: 250px;
+}
+
 .submit-btn,
 .form-body a {
     border-radius: 2px;
