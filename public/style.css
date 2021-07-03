@@ -215,8 +215,6 @@ main {
     color: black;
     margin: 5px;
     padding: 5px;
+    align-content: center;
 }
 
-.hidden {
-    list-style-type: none;
-}

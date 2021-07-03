@@ -40,7 +40,8 @@
         <% } else if (snip.kind==="CodeSnippet" ) { %>
 
             <!-- These fields are for Code Snippets -->
-            <input required readonly value="CodeSnippet" type="text" name="kind" id="kind" class="form-question-text">
+            <div hidden><input required readonly value="CodeSnippet" type="text" name="kind" id="kind" class="form-question-text">
+            </div>
 
             <div class="form-question-text">
                 <label for="language" class="form-question-text">Language</label>
