@@ -25,15 +25,28 @@ app.get('/', async (req, res) => {
     // TODO: Fill the search bar with current query
     let snippets = await Snippet.find().sort({ meta_date: 'desc' });
     let searchQuery = req.query.q;
-    snippets = await search(searchQuery);
+    let searchCode = (req.query.excludeSearchCode == undefined);
+    let searchCommand = (req.query.excludeSearchCommand == undefined);
+    console.log(searchCode);
+    console.log(searchCommand);
+    snippets = await search(searchQuery, searchCode, searchCommand);
 
-    res.render('index', { snippets: snippets, searchQuery: searchQuery });
+    res.render('index', { snippets: snippets, searchQuery: searchQuery, excludeSearchCode: !searchCode, excludeSearchCommand: !searchCommand });
 });
 
-async function search(searchQuery) {
+async function search(searchQuery, searchCode, searchCommand) {
     
     // Get all snippets
-    const snippets = await Snippet.find();
+    let snippets = [];
+    if (searchCode) {
+        const codeSnippets = await CodeSnippet.find();
+        snippets = snippets.concat(codeSnippets);
+    }
+    if (searchCommand) {
+        const commandSnippets = await CommandSnippet.find();
+        snippets = snippets.concat(commandSnippets);
+    }
+
     let results = snippets;
 
     if (searchQuery != null && searchQuery != undefined) {

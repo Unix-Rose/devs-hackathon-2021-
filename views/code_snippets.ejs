@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('_head') %>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/style.css" />
+        <title>Document</title>
+    </head>
 
 <body> 
     <section id = snippets-header> 
         Code snippets 
     </section>
     <% snippets.forEach(snip=> { %>
-        <button type="button" class="collapsible"><%= snip.title %></button>
-        <div class="content">
-            <%- include('_display_snippets') %>
+        <button type="button" class="collapsible"><%= snip.title %></button>>
+            <div class="snippet-container">
+        <h1>
+            <%= snip.title %>
+        </h1>
+        <span>
+            <%= snip.program %>
+        </span>
+        <%- snip.meta_html_sanitised %>
+            <h4><strong>Tags</strong></h4>
+            <ul class = "list">
+                <% snip.tags.forEach(tag=> { %>
+                        <a class = "link" href="/snip/python-b"><%= tag  %> </a> 
+                    <% }); %>
+            </ul>
         </div>
-        <% var coll = document.getElementsByClassName("collapsible");
+        <script>
+        var coll = document.getElementsByClassName("collapsible");
         var i;
 
 for (i = 0; i < coll.length; i++) {
@@ -24,7 +43,7 @@ for (i = 0; i < coll.length; i++) {
       content.style.display = "block";
     }
   });
-} %>
+} </script>
 </body>
 
 </html>
