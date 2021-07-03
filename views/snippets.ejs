@@ -9,17 +9,18 @@
 
         <!-- Title -->
         <h1>
-            <a class="focus-link">
-                <% if (snip.kind === 'CommandSnippet') { %>
-                    <%= snip.program %>:
-                <% } else if (snip.kind === 'CodeSnippet') { %>
-                    <%= snip.language %>:
-                <% } %>
-            </a>
-
             <%= snip.title %>
         </h1>
         
+        <!-- Program/Language -->
+        <a class="focus-link">
+            <% if (snip.kind === 'CommandSnippet') { %>
+                <b>Associated program: </b><%= snip.program %>
+            <% } else if (snip.kind === 'CodeSnippet') { %>
+                <b>Associated language: </b><%= snip.language %>
+            <% } %>
+        </a>
+
         <div class="snippet-md">
             <%- snip.meta_html_sanitised %>
         </div>
