@@ -3,12 +3,15 @@
 * {
     padding: 0; /* Set padding for all elements to 0. */
     margin: 0; /* Set margin for all elements to 0. */
+    font-family: 'Roboto Slab', serif;
 }
 
 .snippet-container { /* selector for elements of class snippet-container. */
     border: 1px solid black; /* border has a width of 1 pixel. */
     padding: 15px; 
     margin-left: 40px;  
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 body { /* selector for body */
@@ -27,21 +30,43 @@ body { /* selector for body */
     transition: background-color 0.15s ease-out;
 }
 
+button {
+    font-size: large;
+    height: 40px;
+}
+
 .btn:hover { 
     background-color: blueviolet;
 }
 
 .header {
     padding: 15px;
-    margin: 30px;
+    margin: 5px;
+    background-color: cadetblue;
 }
 
 .search-form {
     display: flex;
 }
-.btn-search {
-    font-family: 'Roboto Slab', serif;
+
+#search {
+    font-size: large;
+    width: 400px;
+    height: 40px;
+    border: 1px solid black;
+
 }
-.input-field {
-    font-family: 'Roboto Slab', serif; 
+
+.link {
+    display: inline-block;
+    border: 1px solid blue; 
+    background-color: cyan;
+    padding: 3px;
+    margin: 3px;
+    text-align: center;
+    border-radius: 1px;
+}
+
+.list {
+    display: flex;
 }
