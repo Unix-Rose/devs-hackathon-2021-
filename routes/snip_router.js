@@ -13,7 +13,7 @@ router.get('/new/code', (req, res) => {
     res.render('snippet/new', { snip: new CodeSnippet, title: 'Create Code Snippet' });
 });
 
-async function get_concrete_type_snippet(slug) {
+async function get_concrete_type_snippet_by_slug(slug) {
     let real = await CommandSnippet.findOne({meta_slug: slug});
     if (real == null) {
         real = await CodeSnippet.findOne({meta_slug: slug});
@@ -22,46 +22,76 @@ async function get_concrete_type_snippet(slug) {
     return real;
 }
 
+async function get_concrete_type_snippet_by_id(id) {
+    let real = await CommandSnippet.findById(id);
+    if (real == null) {
+        real = await CodeSnippet.findById(id);
+    }
+
+    return real;
+}
+
 router.get('/:slug/edit', async (req, res) => {
-    const snip = await get_concrete_type_snippet(req.params.slug);
+    const snip = await get_concrete_type_snippet_by_slug(req.params.slug);
     if (snip == null) res.redirect('/');
     let title = snip.kind === "CodeSnippet" ? "Edit Code Snippet" : "Edit Command Snippet";
     res.render('snippet/edit', { snip: snip, title: title });
 });
 
 router.get('/:slug', async (req, res) => {
-    const snip = await get_concrete_type_snippet(req.params.slug);
+    const snip = await get_concrete_type_snippet_by_slug(req.params.slug);
     res.render('snippet/view', { snip: snip, title: 'Viewing Snippet' });
 });
 
-router.post('/', saveSnippetAndRedirect('/new'));
+// CREATE
+router.post('/', async (req, res, next) => {
+    let snip;
+    if (req.body.kind === 'CodeSnippet') {
+        snip = new CodeSnippet;
+    } else if (req.body.kind === 'CommandSnippet') {
+        snip = new CommandSnippet;
+    } else {
+        console.log('Error: Snippet kind not defined');
+        res.redirect('/');
+    }
+    req.snippet = snip;
+    next();
+}, saveSnippetAndRedirect('snippet/new'));
+
+// UPDATE
+router.put('/:id', async (req, res, next) => {
+    req.snippet = await get_concrete_type_snippet_by_id(req.params.id); 
+    next();
+}, saveSnippetAndRedirect('snippet/edit'));
+
+router.delete('/:id', async (req, res, next) => {
+    await Snippet.findByIdAndDelete(req.params.id);
+    res.redirect('/');
+});
 
 function saveSnippetAndRedirect(path) {
     return async (req, res) => {
-        let snip;
-        if (req.body.kind === 'CodeSnippet') {
-            snip = new CodeSnippet;
-            snip.language = req.body.language;
-            
-        } else if (req.body.kind === 'CommandSnippet') {
-            snip = new CommandSnippet;
-            snip.program = req.body.program;
-
-        } else {
-            throw Error('Snippet Kind not defined');
-        }
+        let snip = req.snippet;
 
         snip.title = req.body.title;
         snip.snippet = req.body.snippet;
         snip.tags = req.body.tags.split(',');
         snip.category = req.body.category;
+
+        if (snip.kind === 'CodeSnippet') {
+            snip.language = req.body.language;
+        }
+
+        if (snip.kind === 'CommandSnippet') {
+            snip.program = req.body.program;
+        }
     
         try {
             snip = await snip.save();
             res.redirect(`/snip/${snip.meta_slug}`);
         } catch (e) {
             console.log(e);
-            res.render(`${path}`, { snip: snip });
+            res.render(`${path}`, { snip: snip, title: 'Error: Please Try Again' });
         }
     }
 }
