@@ -38,6 +38,12 @@ router.get('/:slug/edit', async (req, res) => {
     res.render('snippet/edit', { snip: snip, title: title });
 });
 
+router.get('/:slug/delete', async (req, res) => {
+    const snip = await get_concrete_type_snippet_by_slug(req.params.slug);
+    if (snip == null) res.redirect('/');
+    res.render('snippet/delete', { snip: snip, title: 'Delete Snippet' });
+});
+
 router.get('/:slug', async (req, res) => {
     const snip = await get_concrete_type_snippet_by_slug(req.params.slug);
     res.render('snippet/view', { snip: snip, title: 'Viewing Snippet' });
