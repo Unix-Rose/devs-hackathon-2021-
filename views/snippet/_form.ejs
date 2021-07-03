@@ -32,7 +32,7 @@
         </div>
 
 
-    <% } else if (snip.kind==="CodeSnippet" ) { %>
+    <% } else if (snip.kind === "CodeSnippet" ) { %>
 
         <!-- These fields are for Code Snippets -->
         <div hidden><input required readonly value="CodeSnippet" type="text" name="kind" id="kind"
@@ -46,5 +46,5 @@
     <% } %>
 
     <a href="/">Cancel</a class="form-question-text">
-    <button type="submit" class="form-question-text">Save</button>
+    <input type="submit" class="form-question-text submit-btn" value="Save">
 </div>

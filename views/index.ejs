@@ -15,7 +15,7 @@
     <!-- Search bar in top left corner. -->
     <header>
         <form action="/" method="GET" class="search-form">
-            <h1>Code Chest</h1>
+            <a class="invisible-link" href='/'><h1>Code Chest</h1></a>
             <input id="search" name="q" type="text" value="<%= searchQuery %>"
                 placeholder="What are you looking for?" />
             <input type="submit" value="Search">
@@ -39,16 +39,11 @@
     </header>
 
     <main>
-        <!-- Buttons for navigating to code/command snippets. -->
-        <!-- These links are temporary. Change them later. -->
-        <section class="btn-container" id="view-snippets">
-            <a class="btn" href="/snip/python-a">Code Snippets</a>
-            <a class="btn" href="/snip/python-b">Command Snippets</a>
-        </section>
-
+        
         <!-- Buttons for navigating to the forms for creating 
         code/command snippets. -->
-        <section class="btn-container" id="create-snippets">
+        <section class="btn-container" id="view-snippets">
+            
             <a class="btn" href="/snip/new/code">Create code snippet</a>
             <a class="btn" href="/snip/new/command">Create command snippet</a>
         </section>

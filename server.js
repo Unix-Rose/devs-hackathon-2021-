@@ -57,7 +57,7 @@ async function search(searchQuery, searchCode, searchCommand) {
             this.field('tags');
             this.field('category');
             this.field('program');
-            this.field('language');
+            this.field('lang');
 
             this.ref('_index');
         

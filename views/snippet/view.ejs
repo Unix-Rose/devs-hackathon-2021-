@@ -4,22 +4,67 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/style.css" />
+        <link rel="stylesheet" type="text/css" href="/md-style.css" />
         <title>Document</title>
     </head>
+
     <body>
-        <a href="/">Back to Home</a>
-        <div>
-            <h1><%= snip.title %></h1>
-            <span><%= snip.program %></span>
-            <%- snip.meta_html_sanitised %>
-            <h4><strong>Tags</strong></h4>
-            <ul>
-                <% snip.tags.forEach(tag => { %>
-                    <li><%= tag %></li>
-                <% }); %>
-            </ul>
-            <a href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
-            <a href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
-        </div>
+        
+        <!-- Search bar in top left corner. -->
+        <%- include('../_header') %>
+
+        <main>
+            <% if (snip.kind === 'CommandSnippet') { %>
+                <h1 class="section-header"><a class="focus-link" href='/'>home</a> / commands / <%= snip.title %></h1>
+            <% } else if (snip.kind === 'CodeSnippet') { %>
+                <h1 class="section-header"><a class="focus-link" href='/'>home</a> / code / <%= snip.title %></h1>
+            <% } %>
+            
+            
+            <!-- Display snippet -->
+            <div class="snippet-container">
+                <!-- Heading -->
+                <% if (snip.kind === 'CommandSnippet') { %>
+                    <h4>Command Snippet</h4>
+                <% } else if (snip.kind === 'CodeSnippet') { %>
+                    <h4>Code Snippet</h4>
+                <% } %>
+        
+                <!-- Title -->
+                <h1>
+                    <a class="focus-link">
+                        <% if (snip.kind === 'CommandSnippet') { %>
+                            <%= snip.program %>:
+                        <% } else if (snip.kind === 'CodeSnippet') { %>
+                            <%= snip.lang %>:
+                        <% } %>
+                    </a>
+        
+                    <%= snip.title %>
+                </h1>
+        
+                <div class="snippet-md">
+                    <%- snip.meta_html_sanitised %>
+                </div>
+        
+                <div class="bottom-bar">
+                    <!-- Tag List -->
+                    <ul class="taglist">
+                        <h4>Tags:</h4>
+                        <% snip.tags.forEach(tag=> { %>
+                            <a class = "link" href="/tag/<%= tag %>"><%= tag  %> </a> 
+                        <% }); %>
+                    </ul>
+        
+                    <!-- Snippet Controls -->
+                    <ul class="controls">
+                        <a class = "nav-btn" href="/snip/<%= snip.meta_slug %>">View</a>
+                        <a class = "nav-btn" href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
+                        <a class = "nav-btn" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
+                    </ul>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
