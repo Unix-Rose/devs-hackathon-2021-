@@ -14,11 +14,11 @@
     <!-- Search bar in top left corner. -->
     <section class="header">
         <form class="search-form">
-            <div>
-                <button class="btn-search" type="button">Search</button>
-            </div>
-            <div class="input-field first-wrap">
+            <div first-wrap>
                 <input id="search" type="text" placeholder="What are you looking for?" />
+            </div>
+            <div>
+                <button type="button">Search</button>
             </div>
             </div>
         </form>
@@ -49,18 +49,18 @@
             </span>
             <%- snip.meta_html_sanitised %>
                 <h4><strong>Tags</strong></h4>
-                <ul>
+                <ul class = "list">
                     <% snip.tags.forEach(tag=> { %>
-                        <li>
-                            <%= tag %>
-                        </li>
+                            <a class = "link" href="/snip/python-b"><%= tag  %> </a> 
                         <% }); %>
                 </ul>
 
                 <!-- Snippet Controls -->
-                <a href="/snip/<%= snip.meta_slug %>">View</a>
-                <a href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
-                <a href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
+                <ul class = "list">
+                <a class = "link" href="/snip/<%= snip.meta_slug %>">View</a>
+                <a class = "link" href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
+                <a class = "link" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
+                </ul>
         </div>
         <% }); %>
 </body>
