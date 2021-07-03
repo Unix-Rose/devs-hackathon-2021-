@@ -101,11 +101,12 @@ main {
     padding: 5px;
     margin: 5px;
     font-size: large;
-    background-color: blue;
+    background-color: cyan;
+    border: 1px solid blue;
 }
 
 .collapsible {
-    background-color: #777;
+    background-color: #e75f6b;
     color: white;
     cursor: pointer;
     padding: 5px;
@@ -119,7 +120,7 @@ main {
 }
 
 .active, .collapsible:hover {
-    background-color: #555;
+    background-color: purple;
 }
 
 .collapsible:after {
@@ -132,7 +133,6 @@ main {
 
 .active:after {
     content: "Hide";
-    /* Unicode character for "minus" sign (-) */
 }
 
 /* SNIPPET STYLING */
