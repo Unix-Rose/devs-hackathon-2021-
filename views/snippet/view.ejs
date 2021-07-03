@@ -7,6 +7,7 @@
         <title>Document</title>
     </head>
     <body>
+        <a href="/">Back to Home</a>
         <div>
             <h1><%= snip.title %></h1>
             <span><%= snip.program %></span>
@@ -17,6 +18,8 @@
                     <li><%= tag %></li>
                 <% }); %>
             </ul>
+            <a href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
+            <a href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
         </div>
     </body>
 </html>
