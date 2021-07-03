@@ -1,41 +1,50 @@
-<div>
-    <label for="title">Title</label>
-    <input required value="<%= snip.title %>" type="text" name="title" id="title">
+<link rel="stylesheet" type="text/css" href="/style.css" />
+
+<div class="form-body">
+
+    <div class="form-question-text form-body">
+        <label for="title" class="form-question-text">Title</label>
+        <input required value="<%= snip.title %>" type="text" name="title" id="title">
+    </div>
+    <div class="form-question-text">
+        <label for="snippet" class="form-question-text">Snippet</label>
+        <textarea required name="snippet" id="snippet"><%= snip.snippet %></textarea>
+    </div>
+    <div class="form-question-text">
+        <label for="category" class="form-question-text">Category</label>
+        <input value="<%= snip.category %>" type="text" name="category" id="category">
+    </div>
+    <div class="form-question-text">
+        <label for="tags" class="form-question-text">Tags (Separate with Commas: tag1,tag2,etc...)</label>
+        <input value="<%= snip.tags.join(" ,"); %>" type="text" name="tags" id="tags">
+    </div>
+
+    <!-- Type-Dependent Fields -->
+    <% if (snip.kind==="CommandSnippet" ) { %>
+
+        <!-- These fields are for Command Snippets -->
+        <div hidden> <input required readonly value="CommandSnippet" type="text" name="kind" id="kind" class="hidden">
+        </div>
+
+        <div class="form-question-text">
+            <label for="program" class="form-question-text">Program</label>
+            <input required value="<%= snip.program %>" type="text" name="program" id="program">
+        </div>
+
+
+    <% } else if (snip.kind==="CodeSnippet" ) { %>
+
+        <!-- These fields are for Code Snippets -->
+        <div hidden><input required readonly value="CodeSnippet" type="text" name="kind" id="kind"
+                class="form-question-text">
+        </div>
+
+        <div class="form-question-text">
+            <label for="lang" class="form-question-text">Language</label>
+            <input required value="<%= snip.lang %>" type="text" name="lang" id="lang">
+        </div>
+    <% } %>
+
+    <a href="/">Cancel</a class="form-question-text">
+    <button type="submit" class="form-question-text">Save</button>
 </div>
-<div>
-    <label for="snippet">Snippet</label>
-    <textarea required name="snippet" id="snippet"><%= snip.snippet %></textarea>
-</div>
-<div>
-    <label for="category">Category</label>
-    <input value="<%= snip.category %>" type="text" name="category" id="category">
-</div>
-<div>
-    <label for="tags">Tags (Separate with Commas: tag1,tag2,etc...)</label>
-    <input value="<%= snip.tags.join(","); %>" type="text" name="tags" id="tags">
-</div>
-
-<!-- Type-Dependent Fields -->
-<% if (snip.kind === "CommandSnippet") { %>
-
-<!-- These fields are for Command Snippets -->
-<input required readonly value="CommandSnippet" type="text" name="kind" id="kind">
-<div>
-    <label for="program">Program</label>
-    <input required value="<%= snip.program %>" type="text" name="program" id="program">
-</div>
-
-
-<% } else if (snip.kind === "CodeSnippet") { %>
-
-<!-- These fields are for Code Snippets -->
-<input required readonly value="CodeSnippet" type="text" name="kind" id="kind">
-
-<div>
-    <label for="lang">Language</label>
-    <input required value="<%= snip.lang %>" type="text" name="lang" id="lang">
-</div>
-<% } %>
-
-<a href="/">Cancel</a>
-<button type="submit">Save</button>
