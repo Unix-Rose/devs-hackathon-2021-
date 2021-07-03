@@ -1,24 +1,44 @@
 <% snippets.forEach(snip=> { %>
     <div class="snippet-container">
+        <!-- Heading -->
+        <% if (snip.kind === 'CommandSnippet') { %>
+            <h4>Command Snippet</h4>
+        <% } else if (snip.kind === 'CodeSnippet') { %>
+            <h4>Code Snippet</h4>
+        <% } %>
+
+        <!-- Title -->
         <h1>
+            <a class="focus-link">
+                <% if (snip.kind === 'CommandSnippet') { %>
+                    <%= snip.program %>:
+                <% } else if (snip.kind === 'CodeSnippet') { %>
+                    <%= snip.language %>:
+                <% } %>
+            </a>
+
             <%= snip.title %>
         </h1>
-        <span>
-            <%= snip.program %>
-        </span>
-        <%- snip.meta_html_sanitised %>
-        <h4><strong>Tags</strong></h4>
-        <ul class = "list">
-            <% snip.tags.forEach(tag=> { %>
-                <a class = "link" href="/tag/<%= tag %>"><%= tag  %> </a> 
-            <% }); %>
-        </ul>
+        
+        <div class="snippet-md">
+            <%- snip.meta_html_sanitised %>
+        </div>
 
-        <!-- Snippet Controls -->
-        <ul class = "list">
-            <a class = "link" href="/snip/<%= snip.meta_slug %>">View</a>
-            <a class = "link" href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
-            <a class = "link" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
-        </ul>
+        <div class="bottom-bar">
+            <!-- Tag List -->
+            <ul class="taglist">
+                <h4>Tags:</h4>
+                <% snip.tags.forEach(tag=> { %>
+                    <a class = "link" href="/tag/<%= tag %>"><%= tag  %> </a> 
+                <% }); %>
+            </ul>
+
+            <!-- Snippet Controls -->
+            <ul class="controls">
+                <a class = "nav-btn" href="/snip/<%= snip.meta_slug %>">View</a>
+                <a class = "nav-btn" href="/snip/<%= snip.meta_slug %>/edit">Edit</a>
+                <a class = "nav-btn" href="/snip/<%= snip.meta_slug %>/delete">Delete</a>
+            </ul>
+        </div>
     </div>
 <% }); %>

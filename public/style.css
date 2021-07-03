@@ -55,19 +55,6 @@ header {
 
 /* MISCELLANEOUS */
 
-.snippet-container {
-    /* selector for elements of class snippet-container. */
-    border: 1px solid black;
-    /* border has a width of 1 pixel. */
-    padding: 15px;
-    margin-left: 40px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    background-color: #fafafa;
-    border-radius: 2px;
-    /* box-shadow: 0 1px 4px rgba(0,0,0,0.2); */
-}
-
 main {
     /* selector for body */
     max-width: 960px;
@@ -96,20 +83,6 @@ main {
 
 .btn:hover {
     background-color: blueviolet;
-}
-
-.link {
-    display: inline-block;
-    border: 1px solid blue;
-    background-color: cyan;
-    padding: 3px;
-    margin: 3px;
-    text-align: center;
-    border-radius: 1px;
-}
-
-.list {
-    display: flex;
 }
 
 #snippets-header {
@@ -151,6 +124,74 @@ main {
     content: "Hide";
     /* Unicode character for "minus" sign (-) */
 }
+
+/* SNIPPET STYLING */
+.snippet-container {
+    /* selector for elements of class snippet-container. */
+    border: 1px solid rgba(0,0,0,0.3);
+    /* border has a width of 1 pixel. */
+    padding: 15px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #fafafa;
+    border-radius: 4px;
+    /* box-shadow: 0 1px 4px rgba(0,0,0,0.2); */
+}
+
+.snippet-md {
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 15px 0;
+}
+
+.snippet-container .taglist {
+    display: flex;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.snippet-container h4 {
+    line-height: 30px;
+    font-size: 12pt;
+    margin-right: 4px;
+}
+
+.snippet-container .link {
+    background-color: #ade6e6;
+    color: #0000e6;
+    text-decoration: none;
+    font-size: 12pt;
+    text-align: center;
+    border-radius: 1px;
+    line-height: 30px;
+    margin: 0 4px;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+
+.snippet-container .nav-btn {
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: #eee;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 2px;
+    color: black;
+    text-decoration: none;
+}
+
+.snippet-container .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.snippet-container .controls {
+    
+}
+
 
 /* CUSTOM CHECKBOX */
 

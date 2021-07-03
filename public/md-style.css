@@ -1,0 +1,37 @@
+.snippet-md code {
+    background-color: white;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+    border-radius: 4px;
+    margin: 10px 0;
+    display: block;
+    border: 1px solid #ddd;
+}
+
+.snippet-md ul {
+    margin-left: 35px;
+}
+
+.snippet-md p, .snippet-md a {
+    line-height: 200%;
+}
+
+.snippet-md h1 {
+    font-size: 130%;
+}
+
+.snippet-md h2 {
+    font-size: 120%;
+}
+
+.snippet-md h3 {
+    font-size: 110%;
+}
+
+.snippet-md h4 {
+    font-size: 105%;
+}
+
+.snippet-md h5, .snippet-md h6 {
+    font-size: 100%;
+}
