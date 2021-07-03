@@ -19,10 +19,16 @@ body { /* selector for body */
     margin: auto; 
 }
 
+.btn-container {
+    display: flex;
+    max-width: 60%;
+    margin: auto;
+}
+
 .btn { /* selector for button */
     display: inline-block;
     height: 80px;
-    width: 120px;
+    width: 50%;
     border: 1px solid blue; 
     background-color: cyan;
     padding: 10px; 
