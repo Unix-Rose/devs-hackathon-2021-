@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('_head') %>
+
+<body> 
+    <section id = snippets-header> 
+        Code snippets 
+    </section>
+    <% snippets.forEach(snip=> { %>
+        <button type="button" class="collapsible"><%= snip.title %></button>
+        <div class="content">
+            <%- include('_display_snippets') %>
+        </div>
+        <% var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+} %>
+</body>
+
+</html>
