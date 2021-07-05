@@ -5,6 +5,10 @@ CodeChest is a library of high quality examples for common one-off tasks - put s
 
 ![Screenshot of home page](codechest.png)
 
+CodeChest was built for the 2021 DEVS Hackathon in Auckland.
+
+You can view the slides used during the presentation here: [hackathon-slides.pdf](https://github.com/mjakeman/devs-hackathon-2021/blob/master/hackathon-slides.pdf)
+
 ## Technologies
 The following technologies were used:
  * NodeJS + Express web server
@@ -25,6 +29,3 @@ npm install
 # Start the dev server
 npm run dev
 ```
-
-## About
-CodeChest was built for the 2021 DEVS Hackathon in Auckland.
